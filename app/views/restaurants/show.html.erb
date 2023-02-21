@@ -1,0 +1,14 @@
+<div class="text-center">
+  <h1><%= @restaurant.name %></h1>
+  <h3><%= @restaurant.category %></h3>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.address %></p>
+  <%= link_to "Add a review!", new_restaurant_review_path(@restaurant) %>
+  <p><strong>Reviews</strong></p>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %> <span class="bg-info rounded p-1"><%= review.rating %>⭐️</span>
+      <%= link_to "Delete", review_path(review), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
+    <% end %>
+  </ul>
+</div>
